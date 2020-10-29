@@ -11,7 +11,11 @@ void ShowArray (char **, int);
 
 int main()
 {
-    
+    int amountOfString;
+    char ** array = CreateArray(&amountOfString);
+    FillArray(array, amountOfString);
+    DeleteNewlineChars(array, amountOfString);
+    ShowArray(array, amountOfString);
 
     return 0;
 }
@@ -24,7 +28,7 @@ char ** CreateArray (int * size){
     printf("\n");
     
     arr = (char **)calloc(*size, sizeof(char *));
-        for(i = 0; i < size; i++){
+        for(i = 0; i < *size; i++){
             arr[i] = (char*)calloc(22, sizeof(char));
         }
     
@@ -34,6 +38,7 @@ char ** CreateArray (int * size){
 void FillArray (char ** arr, int size){
     int i;
     
+    getchar();
     for(i = 0; i < size; i++){
         printf("Enter string %d (max 20 chars): ", i+1);
         fgets(arr[i], 21, stdin);
@@ -45,11 +50,10 @@ void DeleteNewlineChars(char ** arr, int size){
     int i, j;
     
     for(i = 0; i < size; i++){
-        for(j = 0; j < size; j++){
+        for(j = 0; j < 22; j++){
             if (arr[i][j] == '\n'){
                 arr[i][j] = '\0';
             }
-            
         }
     }
 }
