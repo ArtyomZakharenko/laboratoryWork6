@@ -6,6 +6,7 @@
 
 char ** CreateArray (int *);
 void FillArray (char **, int);
+void ShowArray (char **, int);
 
 int main()
 {
@@ -34,7 +35,16 @@ void FillArray (char ** arr, int size){
     
     for(i = 0; i < size; i++){
         printf("Enter string %d (max 20 chars): ", i+1);
-        scanf("%20ms", &arr[i]);
+        fgets(&arr[i], 21, stdin);
+    }
+    printf("\n");
+}
+
+void ShowArray (char ** arr, int size){
+    int i;
+    printf("Your array:\n");
+    for (i = 0; i < size; i++){
+        puts(arr[i]);
     }
     printf("\n");
 }
