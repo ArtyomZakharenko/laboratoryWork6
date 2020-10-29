@@ -8,6 +8,9 @@ char ** CreateArray (int *);
 void FillArray (char **, int);
 void DeleteNewlineChars (char **, int);
 void ShowArray (char **, int);
+void SearchStringWithBiggestWord(char **, int);
+
+void DefineStringWithBiggestWord(int *, int);
 
 int main()
 {
@@ -41,7 +44,7 @@ void FillArray (char ** arr, int size){
     getchar();
     for(i = 0; i < size; i++){
         printf("Enter string %d (max 20 chars): ", i+1);
-        fgets(arr[i], 21, stdin);
+        fgets(arr[i], 22, stdin);
     }
     printf("\n");
 }
@@ -65,4 +68,21 @@ void ShowArray (char ** arr, int size){
         puts(arr[i]);
     }
     printf("\n");
+}
+
+void SearchStringWithBiggestWord(char ** arr, int size){
+    int i, j;
+    void (*define)(int *, int);
+    
+    int * resultArr = (int *)calloc(size, sizeof(int));
+    int counter = 0;
+    for (i = 0; i < size; i++){
+        for (j = 0; j < 22; j++){
+          if (arr[i][j] == ' ' || arr[i][j] == '\0');
+          resultArr[i] = counter;
+          counter = 0;
+          continue;
+        }
+        counter++;
+    }
 }
