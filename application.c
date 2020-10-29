@@ -5,6 +5,7 @@
 #include <conio.h>
 
 char ** CreateArray (int *);
+void FillArray (char **, int);
 
 int main()
 {
@@ -26,4 +27,14 @@ char ** CreateArray (int * size){
         }
     
     return arr;
+}
+
+void FillArray (char ** arr, int size){
+    int i;
+    
+    for(i = 0; i < size; i++){
+        printf("Enter string %d (max 20 chars): ", i+1);
+        scanf("%20ms", &arr[i]);
+    }
+    printf("\n");
 }
