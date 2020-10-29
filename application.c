@@ -19,6 +19,7 @@ int main()
     FillArray(array, amountOfString);
     DeleteNewlineChars(array, amountOfString);
     ShowArray(array, amountOfString);
+    SearchStringWithBiggestWord(array, amountOfString);
 
     return 0;
 }
@@ -84,5 +85,28 @@ void SearchStringWithBiggestWord(char ** arr, int size){
           continue;
         }
         counter++;
+    }
+    
+    for (i = 0; i < size; i++){
+            printf("%d\n", resultArr[i]);
+    }
+    
+    define = DefineStringWithBiggestWord;
+    define(resultArr, size);
+}
+
+void DefineStringWithBiggestWord (int * arr, int size){
+    int i;
+    int maxElement = *arr;
+    for(i = 1; i < size; i++){
+        if (maxElement < arr[i]){
+            maxElement = arr[i];
+        }
+    }
+    
+    for (i = 0; i < size; i++){
+        if (arr[i] == maxElement){
+            printf("Number of string with the biggest word is %d\n", i+1);
+        }
     }
 }
