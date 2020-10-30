@@ -12,6 +12,7 @@ void SearchStringWithBiggestWord(char **, int);
 
 void DefineStringWithBiggestWord(int *, int);
 
+
 int main()
 {
     int amountOfString;
@@ -20,6 +21,8 @@ int main()
     DeleteNewlineChars(array, amountOfString);
     ShowArray(array, amountOfString);
     SearchStringWithBiggestWord(array, amountOfString);
+    
+    _getch();
 
     return 0;
 }
@@ -77,19 +80,26 @@ void SearchStringWithBiggestWord(char ** arr, int size){
     
     int * resultArr = (int *)calloc(size, sizeof(int));
     int counter = 0;
+    int maxElement = 0;
     for (i = 0; i < size; i++){
+        counter = 0;
         for (j = 0; j < 22; j++){
-          if (arr[i][j] == ' ' || arr[i][j] == '\0');
-          resultArr[i] = counter;
-          counter = 0;
-          continue;
+          if(arr[i][j] != ' ' || arr[i][j] != '\0'){
+              if (arr[i][j] == ' '){
+                  counter = 0;
+                  continue;
+              }
+                counter++;
+              }
+              if(counter > resultArr[i]){
+                  resultArr[i] = counter;
+              }
+              if (arr[i][j] == '\0'){
+                  break;
+              }
         }
-        counter++;
     }
     
-    for (i = 0; i < size; i++){
-            printf("%d\n", resultArr[i]);
-    }
     
     define = DefineStringWithBiggestWord;
     define(resultArr, size);
