@@ -84,7 +84,7 @@ void SearchStringWithBiggestWord(char ** arr, int size){
     for (i = 0; i < size; i++){
         counter = 0;
         for (j = 0; j < 22; j++){
-          if(arr[i][j] != ' ' || arr[i][j] != '\0'){
+          if(arr[i][j] != '\0'){
               if (arr[i][j] == ' '){
                   counter = 0;
                   continue;
